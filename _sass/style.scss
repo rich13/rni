@@ -1,0 +1,83 @@
+@use "variables" as v;
+@use "typography";
+@use "layout";
+@use "boxes";
+@use "posts";
+
+// Additional utilities
+.cache {
+    font-size: 0.6em;
+}
+
+#update {
+    color: v.$color-border;
+    font-size: 0.7em;
+    margin: 0;
+    position: fixed;
+    bottom: 3px;
+    left: 3px;
+}
+
+.info_link {
+    opacity: 0.39;
+}
+
+.hi {
+    background: yellow;
+}
+
+// Special link styles
+.t span {
+    visibility: hidden;
+    position: absolute;
+    margin: -1em -1.3em 0 0;
+    font-size: 0.6em;
+    line-height: 1.6em;
+    background: #fff;
+    padding: 0em 0.3em;
+    border: 1px solid #ddd;
+    opacity: 0.8;
+}
+
+.hover span {
+    visibility: visible;
+}
+
+// Call to action links
+a.cta {
+    background-color: v.$color-light-gray;
+    border: 2px solid v.$color-primary;
+    color: v.$color-text;
+    padding: 0 0.65em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 13px;
+
+    &:hover {
+        opacity: 0.65;
+    }
+}
+
+// External links
+a.external {
+    display: inline;
+    position: relative;
+    padding: 0 0.65em 0 0;
+
+    sup {
+        color: v.$color-text;
+        font-size: 0.6em;
+        font-weight: normal;
+        padding: 0;
+        position: absolute;
+        top: -1em;
+        font-family: v.$font-family-icons;
+    }
+
+    &:hover sup {
+        color: v.$color-text;
+    }
+} 

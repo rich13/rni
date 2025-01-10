@@ -1,0 +1,57 @@
+# Site settings
+title: Richard Northover
+description: Digital product consultant specializing in identity, privacy, and trust
+author: Richard Northover
+url: https://richard.northover.info
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  parse_block_html: true
+sass:
+  style: compressed
+  sass_dir: _sass
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .github
+  - README.md
+  - LICENSE
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /things/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: "_pages"
+    values:
+      layout: "page"
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+include: ["_pages"]
+
+# Custom settings
+show_hidden: false 

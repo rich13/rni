@@ -1,0 +1,499 @@
+@use "variables" as v;
+
+// Base layout
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: v.$font-family-base;
+    color: v.$color-text;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+// Responsive images
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border: 3px double v.$color-border;
+    box-shadow: v.$shadow-default;
+
+    &.side {
+        width: 50%;
+        margin: 0 0 1em 2em;
+        float: right;
+    }
+}
+
+figure {
+    margin: 1.5rem 0;
+    
+    img {
+        border: 3px double v.$color-border;
+        box-shadow: v.$shadow-default;
+    }
+    
+    figcaption {
+        text-align: center;
+        font-size: 0.9em;
+        color: v.$color-gray;
+        margin-top: 0.5rem;
+    }
+}
+
+// Header area
+.header-area {
+    background: v.$color-light-gray;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+
+    .header-content {
+        max-width: min(90%, 1200px);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 0 1rem;
+    }
+}
+
+// Main container
+#container {
+    max-width: min(90%, 1200px);
+    margin: 0 auto;
+}
+
+.container-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 300px);
+    gap: 2rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    &.no-sidebar {
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+
+    @media (max-width: v.$breakpoint-tablet) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+// Content areas
+#content {
+    min-width: 0;
+    max-width: 100%;
+    
+    .no-sidebar & {
+        padding: 0 1rem;
+    }
+
+    img {
+        max-height: 70vh;
+        object-fit: contain;
+        
+        @media (max-width: v.$breakpoint-tablet) {
+            max-height: 50vh;
+        }
+    }
+}
+
+// Sidebar styles
+.sidebar {
+    min-width: 0;
+    max-width: 300px;
+    background: v.$color-light-gray;
+    padding: 1.5rem;
+    border-radius: 4px;
+
+    section {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+
+        &:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        h2 {
+            font-size: 1em;
+            color: v.$color-gray;
+            margin: 0 0 1rem 0;
+            padding: 0;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin: 0;
+                padding: 0.5em 0;
+                text-indent: 0;
+                list-style: none;
+
+                &:before {
+                    content: none;
+                }
+
+                a {
+                    color: v.$color-text;
+                    text-decoration: none;
+                    border: none;
+                    background: none;
+                    padding: 0;
+
+                    &:hover {
+                        color: v.$color-primary;
+                    }
+
+                    &.active {
+                        color: v.$color-primary;
+                        font-weight: bold;
+                    }
+                }
+
+                span {
+                    color: v.$color-gray;
+                    font-size: 0.9em;
+                    margin-left: 0.5em;
+                }
+
+                time {
+                    color: v.$color-gray;
+                    font-size: 0.9em;
+                    margin-right: 0.5em;
+                }
+            }
+        }
+    }
+
+    @media (max-width: v.$breakpoint-tablet) {
+        max-width: 100%;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid v.$color-light-gray;
+    }
+}
+
+// Blog styles
+.category-section,
+.tag-section {
+    margin-bottom: 3rem;
+
+    h3 {
+        color: v.$color-primary;
+        font-size: 1.2em;
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+            margin: 0;
+            padding: 0.5em 0;
+            text-indent: 0;
+            list-style: none;
+
+            &:before {
+                content: none;
+            }
+
+            time {
+                color: v.$color-gray;
+                font-size: 0.9em;
+                margin-right: 1em;
+            }
+        }
+    }
+}
+
+// Project styles
+.project {
+    .project-meta {
+        color: v.$color-gray;
+        font-size: 0.9em;
+        margin-bottom: 2rem;
+
+        .status {
+            text-transform: uppercase;
+            font-size: 0.8em;
+            letter-spacing: 0.05em;
+        }
+    }
+
+    .project-links {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid v.$color-light-gray;
+
+        a {
+            display: inline-block;
+            margin: 0 1em 1em 0;
+            padding: 0.5em 1em;
+            background: v.$color-light-gray;
+            border: 1px solid v.$color-border;
+            border-radius: 3px;
+            color: v.$color-text;
+            text-decoration: none;
+
+            &:hover {
+                background: v.$color-primary;
+                border-color: v.$color-primary;
+                color: white;
+            }
+        }
+    }
+}
+
+// Footer area
+#footer {
+    background: v.$color-text;
+    padding: 2rem 5vw;
+    color: white;
+    margin-top: 2rem;
+
+    ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline;
+            margin: 0 1em 0 0;
+            padding: 0;
+
+            &:before {
+                content: normal;
+            }
+
+            a {
+                color: white;
+                background: transparent;
+                border: none;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}
+
+// Navigation
+#nav {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border: 13px solid #fff;
+
+    ul {
+        margin: 1em 0;
+        padding: 0;
+        font-size: 0.9em;
+
+        li {
+            display: inline;
+            margin: 1em 1em 0 0;
+            padding: 0;
+
+            &:before {
+                content: normal;
+            }
+
+            a {
+                color: v.$color-text;
+                background: transparent;
+                border: none;
+
+                &:hover {
+                    color: v.$color-primary;
+                }
+
+                &.active {
+                    &:hover {
+                        color: v.$color-text;
+                        border: none;
+                        background: transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Post-it notes
+.postit {
+    ul {
+        max-width: 100%;
+        display: grid;
+        gap: 1em;
+        margin: 2em 0 3em 0;
+        grid-template-columns: repeat(4, 1fr);
+
+        @media (max-width: v.$breakpoint-large) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: v.$breakpoint-tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        li {
+            display: block;
+            padding: 1em 0.5em;
+            font-size: 0.9em;
+            content: "";
+            text-indent: 0;
+            text-align: center;
+            background: v.$postit-bg;
+            box-shadow: v.$shadow-postit;
+
+            &::before {
+                content: "";
+            }
+
+            strong {
+                font-weight: normal;
+                background: v.$postit-strong-bg;
+                border-bottom: 1px solid v.$postit-strong-border;
+                padding: 0.1em 0.3em;
+            }
+        }
+    }
+}
+
+// Header area
+h1 {
+    margin: 0 -5vw 2rem -5vw;
+    padding: 0 5vw;
+    width: calc(100% + 10vw);
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// Navigation
+.site-nav {
+    font-size: 0.9em;
+    
+    a {
+        color: v.$color-text;
+        text-decoration: none;
+        border: none;
+        margin-right: 1em;
+        padding: 0;
+        opacity: 0.7;
+
+        &:hover {
+            color: v.$color-primary;
+            opacity: 1;
+            border: none;
+            background: none;
+        }
+
+        &.active {
+            color: v.$color-primary;
+            opacity: 1;
+        }
+    }
+}
+
+// Post styles
+.post {
+    .post-header {
+        margin-bottom: 2rem;
+
+        .post-image {
+            margin: -2rem -1rem 2rem -1rem;
+            
+            img {
+                width: 100%;
+                height: auto;
+                border: none;
+                box-shadow: none;
+            }
+        }
+
+        h1 {
+            margin: 0 0 1rem 0;
+        }
+    }
+
+    .post-meta {
+        color: v.$color-gray;
+        font-size: 0.9em;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            border: none;
+            
+            &:hover {
+                color: v.$color-primary;
+            }
+        }
+
+        .status {
+            text-transform: uppercase;
+            font-size: 0.8em;
+            letter-spacing: 0.05em;
+        }
+
+        .category {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .tag {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .post-links {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid v.$color-light-gray;
+
+        a {
+            display: inline-block;
+            margin: 0 1em 1em 0;
+            padding: 0.5em 1em;
+            background: v.$color-light-gray;
+            border: 1px solid v.$color-border;
+            border-radius: 3px;
+            color: v.$color-text;
+            text-decoration: none;
+
+            &:hover {
+                background: v.$color-primary;
+                border-color: v.$color-primary;
+                color: white;
+            }
+        }
+    }
+} 

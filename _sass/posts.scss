@@ -1,0 +1,70 @@
+@use "variables" as v;
+
+// Blog post styles
+article {
+  .meta {
+    color: v.$color-gray;
+    font-size: 0.9em;
+    margin-bottom: 2rem;
+
+    a {
+      color: v.$color-gray;
+
+      &:hover {
+        color: v.$color-primary;
+      }
+    }
+  }
+
+  .tags {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid v.$color-light-gray;
+    font-size: 0.9em;
+
+    a {
+      display: inline-block;
+      margin: 0 0.5em 0.5em 0;
+      padding: 0.2em 0.5em;
+      background: v.$color-light-gray;
+      border: 1px solid v.$color-border;
+      border-radius: 3px;
+      color: v.$color-gray;
+
+      &:hover {
+        color: v.$color-primary;
+        border-color: v.$color-primary;
+      }
+    }
+  }
+}
+
+// Blog index page
+.blog-posts {
+  article {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid v.$color-light-gray;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .meta {
+      margin-bottom: 1rem;
+    }
+
+    .excerpt {
+      margin-bottom: 1rem;
+    }
+
+    .read-more {
+      color: v.$color-primary;
+      font-weight: bold;
+
+      &:hover {
+        opacity: 0.76;
+      }
+    }
+  }
+} 

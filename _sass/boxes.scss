@@ -1,0 +1,141 @@
+@use "variables" as v;
+
+// Box layouts
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.duo, .paired {
+    gap: 1.5rem;
+}
+
+.duo .box {
+    flex: 1 1 calc(50% - 0.75rem);
+    min-width: 250px;
+}
+
+.paired {
+    align-items: flex-start;
+    
+    .box {
+        flex: 1 1 calc(65% - 0.75rem);
+        min-width: 250px;
+        padding: 0;
+
+        h3 {
+            margin-top: 0;
+            padding-top: 0;
+        }
+    }
+
+    .sbox {
+        flex: 1 1 calc(35% - 0.75rem);
+        min-width: 200px;
+        padding: 0;
+
+        p {
+            margin: 0;
+            padding: 0;
+            line-height: 0;
+        }
+
+        img {
+            max-height: 300px;
+            width: 100%;
+            object-fit: cover;
+            border: 3px double v.$color-border;
+            box-shadow: v.$shadow-default;
+            display: block;
+        }
+    }
+}
+
+.multi {
+    gap: 1.5rem;
+    margin: 2em 0;
+
+    .box {
+        flex: 1 1 calc(33.333% - 1rem);
+        min-width: 250px;
+        padding: 1rem;
+        background: v.$color-white;
+        border: 1px solid v.$box-border;
+        border-bottom: 3px double v.$color-border;
+        border-radius: 4px;
+        box-shadow: v.$shadow-default;
+
+        img {
+            max-height: 200px;
+            width: 100%;
+            object-fit: cover;
+            border: 3px double v.$color-border;
+            box-shadow: v.$shadow-default;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: v.$breakpoint-large) {
+            flex: 1 1 calc(50% - 0.75rem);
+        }
+
+        @media (max-width: v.$breakpoint-tablet) {
+            flex: 1 1 100%;
+        }
+    }
+}
+
+.multi h2,
+.multi h3,
+.paired h2,
+.paired h3 {
+    font-size: 1.1em;
+    margin: 0 0 0.5rem 0;
+    padding: 0;
+}
+
+.small {
+    .box {
+        flex: 1 1 calc(40% - 0.9rem);
+        min-width: 200px;
+        border: 1px solid v.$box-border;
+        border-bottom: 3px double v.$color-border;
+        padding: 1rem;
+    }
+}
+
+.postit {
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        
+        li {
+            flex: 1 1 calc(33.333% - 0.667rem);
+            min-width: 200px;
+            padding: 1rem;
+            background: #fff9c4;
+            border: 1px solid #fff176;
+            border-radius: 4px;
+            box-shadow: v.$shadow-postit;
+            text-indent: 0;
+            
+            &::before { 
+                content: ""; 
+            }
+            
+            strong {
+                background: none;
+                border: none;
+                padding: 0;
+                font-weight: bold;
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+} 

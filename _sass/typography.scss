@@ -1,0 +1,196 @@
+@use "variables" as v;
+
+// Font faces
+@font-face {
+    font-family: 'interregular';
+    src: url('../font/inter/Inter-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'phosphor';
+    src: url('../font/Phosphor/Phosphor-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    font-family: v.$font-family-base;
+}
+
+@supports (font-variation-settings: normal) {
+    :root {
+        font-family: 'Inter var', v.$font-family-icons;
+    }
+}
+
+// Headings
+h1 {
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+    display: inline-block;
+    font-size: clamp(1rem, 3vw, 1.5em);
+    font-family: v.$font-family-base;
+    font-weight: normal;
+
+    a {
+        color: v.$color-primary;
+        text-decoration: none;
+        border: none;
+        background: none;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+
+        &:hover {
+            opacity: 0.76;
+            border: none;
+            background: none;
+        }
+    }
+
+    .separator {
+        color: v.$color-gray;
+        margin: 0 0.2em;
+        font-size: 0.9em;
+        opacity: 0.5;
+    }
+}
+
+h2, h3, h4, h5 {
+    color: v.$color-primary;
+    margin: 0;
+    line-height: 1.65em;
+    font-size: 1.2em;
+    padding: 1em 0;
+    font-weight: bold;
+}
+
+// Body text
+p {
+    line-height: 1.65em;
+}
+
+strong {
+    font-weight: normal;
+    background: v.$highlight-yellow;
+    border-bottom: 1px solid v.$highlight-yellow-border;
+    padding: 0.1em 0.3em;
+}
+
+em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+abbr {
+    border-bottom: 1px dashed v.$color-border;
+}
+
+// Lists
+ul, ol {
+    margin: 1em 0 1em 1.3em;
+    padding: 0;
+}
+
+ul li {
+    padding: 0.5em 0;
+    text-indent: -1.8em;
+    list-style-position: outside;
+    list-style-type: none;
+
+    &:before {
+        font-family: v.$font-family-icons;
+        margin: 0 0.5em 0 0;
+    }
+
+    a {
+        text-indent: 0;
+    }
+}
+
+// Icon classes for list items
+@each $id, $icon in (
+    product: "\EC7C",
+    dev: "\E1C4",
+    sci: "\E924",
+    identity: "\E23E",
+    work: "\E4CA",
+    meeting: "\E7B4",
+    linkedin: "\E2EE",
+    email: "\E214",
+    org: "\E67C",
+    simple: "\ECC4",
+    human: "\E16E"
+) {
+    ul li##{$id}:before,
+    ul li:has(a##{$id}):before {
+        content: "#{$icon}  ";
+    }
+}
+
+// Blockquotes
+blockquote {
+    margin: 2em 0;
+
+    p {
+        background: v.$highlight-quote;
+        margin: 1em 0;
+        padding: 0.5em 1em;
+        border-left: 0.5em solid v.$highlight-quote-border;
+        color: v.$color-text;
+        box-shadow: v.$shadow-default;
+    }
+
+    cite {
+        display: block;
+        font-size: 0.8em;
+        text-align: right;
+
+        a {
+            color: v.$color-gray;
+            border: none;
+        }
+    }
+}
+
+// Links
+a {
+    color: v.$color-link;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid v.$color-link;
+    background: transparent;
+    padding: 0 0.13em;
+
+    &:hover {
+        border-bottom: 1px dashed v.$color-link;
+        text-decoration: none;
+        opacity: 0.76;
+    }
+
+    &:has(img) {
+        border: 0;
+    }
+}
+
+i {
+    font-family: v.$font-family-icons;
+    font-style: normal;
+}
+
+ul li:before {
+    font-family: v.$font-family-icons;
+    margin: 0 0.5em 0 0;
+}
+
+// Horizontal rules
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px dashed v.$color-border;
+    margin: 2em 0;
+} 

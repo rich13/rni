@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    {% capture page_url %}https://richard.northover.info{% if page.url != '/' %}{{ page.url | remove: '.html' | remove: 'index.html' }}{% endif %}{% endcapture %}
+    <title>{{ page_url }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta name="author" content="{{ site.author }}">
+    
+    <link href="{{ '/assets/css/main.css' | relative_url }}" rel="stylesheet" type="text/css" media="all">
+    {% if page.custom_css %}
+    <link href="{{ page.custom_css | relative_url }}" rel="stylesheet" type="text/css" media="all">
+    {% endif %}
+
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="me" href="https://mastodon.me.uk/@rich13">
+    {% include favicon.html %}
+</head>
+<body id="{{ page.name | split: '.' | first }}">
+    <header class="header-area">
+        <div class="header-content">
+            {% assign url_parts = page.url | remove: '.html' | remove: 'index.html' | split: '/' %}
+            <h1>
+                <a href="/">https://richard.northover.info</a>{% for part in url_parts %}{% if part != '' %}<span class="separator">/</span><a href="{% for p in url_parts limit: forloop.index %}{{ p | append: '/' }}{% endfor %}">{{ part }}</a>{% endif %}{% endfor %}
+            </h1>
+            {% include nav.html %}
+        </div>
+    </header>
+
+    <div id="container">
+        <div class="container-inner{% unless page.url contains '/things' %} no-sidebar{% endunless %}">
+            <main id="content">
+                {{ content }}
+            </main>
+            {% if page.url contains '/things' %}
+            {% include sidebar.html %}
+            {% endif %}
+        </div>
+    </div>
+
+    <footer id="footer">
+        <ul>
+            <li>© 1976 - {{ 'now' | date: "%Y" }}</li>
+        </ul>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+    {% if page.custom_js %}
+    {% for js_file in page.custom_js %}
+    <script src="{{ js_file | relative_url }}"></script>
+    {% endfor %}
+    {% endif %}
+</body>
+</html> 
