@@ -2,8 +2,15 @@
 title: Richard Northover
 description: Digital product consultant specializing in identity, privacy, and trust
 author: Richard Northover
-url: https://richard.northover.info
-baseurl: ""
+
+# URLs
+url: "https://rich13.github.io" # Production URL
+baseurl: "/rni2" # the subpath of your site, e.g. /blog
+
+# Environment specific settings
+development:
+  url: "http://localhost:4000"
+  baseurl: ""
 
 # Build settings
 markdown: kramdown
@@ -20,9 +27,17 @@ plugins:
   - jekyll-redirect-from
   - jekyll-relative-links
 
+# Plugin settings
 relative_links:
   enabled: true
   collections: true
+
+# GitHub Pages specific settings
+github: [metadata]
+encoding: UTF-8
+future: false
+jailed: false
+gfm_quirks: paragraph_end
 
 # Exclude from processing
 exclude:
@@ -34,6 +49,16 @@ exclude:
   - .github
   - README.md
   - LICENSE
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - docker-compose.yml
+  - Dockerfile
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
 
 # Collections
 collections:
@@ -56,8 +81,23 @@ defaults:
       path: ""
     values:
       layout: "default"
+  - scope:
+      path: "assets/images"
+    values:
+      image: true
 
 include: ["_pages"]
 
 # Custom settings
-show_hidden: false 
+show_hidden: false
+
+# SEO settings
+twitter:
+  username: richardnorthover
+  card: summary
+social:
+  name: Richard Northover
+  links:
+    - https://twitter.com/richardnorthover
+    - https://github.com/richardnorthover
+    - https://www.linkedin.com/in/richardnorthover 
