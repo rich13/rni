@@ -92,19 +92,20 @@ abbr {
 
 // Lists
 ul, ol {
-    margin: 1em 0 1em 1.3em;
+    margin: 1em 0 1em 2em;
     padding: 0;
 }
 
 ul li {
     padding: 0.5em 0;
-    text-indent: -1.8em;
+    text-indent: -2.2em;
     list-style-position: outside;
     list-style-type: none;
 
     &:before {
-        font-family: v.$font-family-icons;
-        margin: 0 0.5em 0 0;
+        content: "—";
+        font-family: v.$font-family-base;
+        margin: 0 0.7em 0 0;
     }
 
     a {

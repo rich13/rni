@@ -4,24 +4,22 @@ layout: default
 <article class="post">
   <h2>{{ page.title }}</h2>
   <div class="post-meta">
-    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-    {% if page.status %}
-    • <span class="status">{{ page.status }}</span>
-    {% endif %}
-    {% if page.categories %}
-    • <span class="categories">
+    <ul>
+      <li><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></li>
+      {% if page.status %}
+      <li><span class="status">{{ page.status }}</span></li>
+      {% endif %}
+      {% if page.categories %}
       {% for category in page.categories %}
-        <a href="/things/categories/{{ category | downcase }}" class="category">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+      <li><a href="/things/categories/{{ category | downcase }}" class="category">{{ category | downcase }}</a></li>
       {% endfor %}
-    </span>
-    {% endif %}
-    {% if page.tags %}
-    • <span class="tags">
+      {% endif %}
+      {% if page.tags %}
       {% for tag in page.tags %}
-        <a href="/things/tags/{{ tag | downcase }}" class="tag">#{{ tag }}</a>{% unless forloop.last %} {% endunless %}
+      <li><a href="/things/tags/{{ tag | downcase }}" class="tag">#{{ tag | downcase }}</a></li>
       {% endfor %}
-    </span>
-    {% endif %}
+      {% endif %}
+    </ul>
   </div>
 
   {{ content }}

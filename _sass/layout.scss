@@ -73,6 +73,7 @@ figure {
 #container {
     max-width: min(90%, 1200px);
     margin: 0 auto;
+    width: 100%;
 }
 
 .container-inner {
@@ -81,6 +82,7 @@ figure {
     gap: 2rem;
     margin: 0 auto;
     padding: 0 1rem;
+    width: 100%;
 
     &.no-sidebar {
         grid-template-columns: 1fr;
@@ -96,7 +98,8 @@ figure {
 // Content areas
 #content {
     min-width: 0;
-    max-width: 100%;
+    width: 100%;
+    display: block;
     
     .no-sidebar & {
         padding: 0 1rem;

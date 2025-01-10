@@ -3,10 +3,6 @@
 {% assign current_category = url_parts[3] | default: '' %}
 {% assign current_tag = url_parts[3] | default: '' %}
 
-<!-- Debug: {{ url_parts | join: ',' }} -->
-<!-- Current category: {{ current_category }} -->
-<!-- Current tag: {{ current_tag }} -->
-
 <div class="sidebar">
 {% if section == 'things' %}
 <section class="archives">
@@ -16,7 +12,6 @@
     {% for year in posts_by_year %}
     <li>
       <a href="/things/{{ year.name }}" {% if url_parts[2] == year.name %}class="active"{% endif %}>{{ year.name }}</a>
-      <span>({{ year.items | size }})</span>
     </li>
     {% endfor %}
   </ul>
@@ -31,8 +26,7 @@
     {% assign name = category[0] %}
     {% assign name_lower = name | downcase %}
     <li>
-      <a href="/things/categories/{{ name_lower }}" {% if current_category == name_lower %}class="active"{% endif %}>{{ name }}</a>
-      <span>({{ category[1].size }})</span>
+      <a href="/things/categories/{{ name_lower }}" {% if current_category == name_lower %}class="active"{% endif %}>{{ name_lower }}</a>
     </li>
     {% endfor %}
     {% endif %}
@@ -47,8 +41,7 @@
     {% assign name = tag[0] %}
     {% assign name_lower = name | downcase %}
     <li>
-      <a href="/things/tags/{{ name_lower }}" {% if current_tag == name_lower %}class="active"{% endif %}>#{{ name }}</a>
-      <span>({{ tag[1].size }})</span>
+      <a href="/things/tags/{{ name_lower }}" {% if current_tag == name_lower %}class="active"{% endif %}>#{{ name_lower }}</a>
     </li>
     {% endfor %}
   </ul>

@@ -86,10 +86,10 @@ I can help you and your teams to **work together** with a shared understanding.
 {% assign projects = site.posts | where_exp: "post", "post.tags contains 'project'" | sort: "date" | reverse | limit: 3 %}
 {% for project in projects %}
 <div class="sbox" markdown="1">
-[![{{ project.title }}]({{ project.image }})](/things/{{ project.slug }})
+[![{{ project.title }}]({{ project.image }})]({{ project.url }})
 </div>
 <div class="box" markdown="1">
-### [{{ project.title }}](/things/{{ project.slug }})
+### [{{ project.title }}]({{ project.url }})
 
 {{ project.excerpt }}
 </div>
@@ -104,10 +104,10 @@ I can help you and your teams to **work together** with a shared understanding.
 {% assign work_posts = site.posts | where_exp: "post", "post.tags contains 'work'" | sort: "date" | reverse %}
 {% for post in work_posts %}
 <div class="sbox" markdown="1">
-[![{{ post.title }}]({{ post.image }})](/things/{{ post.slug }})
+[![{{ post.title }}]({{ post.image }})]({{ post.url }})
 </div>
 <div class="box" markdown="1">
-### [{{ post.title }}](/things/{{ post.slug }})
+### [{{ post.title }}]({{ post.url }})
 
 {{ post.content }}
 </div>
@@ -134,8 +134,8 @@ I can help you and your teams to **work together** with a shared understanding.
 
 ## Contact me {#contact}
 
-- Please feel free to message me via [LinkedIn](https://www.linkedin.com/in/northover) {#linkedin}
-- You can [request a meeting](/meeting) {#meeting} if you'd like an informal chat
-- I hear email is also a popular way of communicating: [richard@northover.info](mailto:richard@northover.info) {#email}
+- Please feel free to message me via [LinkedIn](https://www.linkedin.com/in/northover)
+- You can [request a meeting](/meeting) if you'd like an informal chat
+- I hear email is also a popular way of communicating: [richard@northover.info](mailto:richard@northover.info)
 
 ![The sky](assets/images/w.png) 

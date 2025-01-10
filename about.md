@@ -5,9 +5,9 @@ description: Learn more about Richard Northover and what I do
 permalink: /about/
 ---
 
-- I work with organisations to **find better ways to think about digital identity** {#org}
-- I help them to have **simple, consistent and trusted** relationships with their users {#simple}
-- I speak **fluent human** {#human}
+- I work with organisations to **find better ways to think about digital identity**
+- I help them to have **simple, consistent and trusted** relationships with their users
+- I speak **fluent human**
 
 <div class="multi boxes">
 <div class="box" markdown="1">

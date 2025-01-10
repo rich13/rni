@@ -10,6 +10,8 @@ permalink: /things/
 <div class="sbox" markdown="1">
 {% if post.image %}
 ![{{ post.title }}]({{ post.image }})
+{% else %}
+<div style="width: 100%; height: 184px; background-color: #eee; border: 3px double #aaa; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"></div>
 {% endif %}
 </div>
 <div class="box" markdown="1">
